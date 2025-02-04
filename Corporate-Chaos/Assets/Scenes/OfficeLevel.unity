@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 297270584}
   - component: {fileID: 297270583}
   - component: {fileID: 297270585}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: Test_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: 823657372}
   - component: {fileID: 823657371}
   - component: {fileID: 823657370}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: Test_0 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -744,7 +744,7 @@ GameObject:
   - component: {fileID: 1407703675}
   - component: {fileID: 1407703674}
   - component: {fileID: 1407703673}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: Test_0 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -892,7 +892,7 @@ MonoBehaviour:
   groundCheck: {fileID: 2782435}
   groundMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 8
 --- !u!61 &1782346611 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 2069653806118425942, guid: b84495ba100431642a9cc77e48f514d9, type: 3}

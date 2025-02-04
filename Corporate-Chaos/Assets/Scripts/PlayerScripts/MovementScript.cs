@@ -8,7 +8,7 @@ public class MovementScript : Core
     const float MoveSpeed = 17f;
     public float JumpSpeed = 45f;
     const float DashSpeed = 2f;
-    const float GRAVITYSCALE = 1.02f;
+    const float GRAVITYSCALE = 1.015f;
     public float maxGrav;
     public float minGrav;
     public float horizontalMovement { get; private set; }
