@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c42beb8430a24941a9f025fc7d97d1d, type: 3}
-  m_Name: AK47
+  m_Name: Pistol
   m_EditorClassIdentifier: 
-  name: AK47
-  damage: 200
+  name: Pistol
+  damage: 100
   weight: 1
-  fireRate: 0.3
-  dropChance: 50
+  fireRate: 0.5
+  dropChance: 30
   meleeWeapon: 0

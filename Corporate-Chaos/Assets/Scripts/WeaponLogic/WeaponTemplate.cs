@@ -7,10 +7,10 @@ public class WeaponTemplate : ScriptableObject
     public float damage;
     public float weight;
     public float fireRate;
-    public float dropChance;
+    public int dropChance;
     public bool meleeWeapon;
 
-    public WeaponTemplate(string name, float damage, float weight, float fireRate, float dropChance, bool meleeWeapon)
+    public WeaponTemplate(string name, float damage, float weight, float fireRate, int dropChance, bool meleeWeapon)
     {
         this.name = name;
         this.damage = damage;

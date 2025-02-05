@@ -12,7 +12,7 @@ public class WeaponDisk : MonoBehaviour
     [SerializeField]
     LayerMask playerMask;
     bool overlap;
-    float interactInput;
+    public float interactInput;
     bool primaryWeaponEquipped;
     bool secondaryWeaponEquipped;
 
@@ -23,29 +23,26 @@ public class WeaponDisk : MonoBehaviour
     SecondaryWeapon secondaryWeapon;
 
     //list of weapons and drop chance
-    public List<WeaponTemplate> weapons = new List<WeaponTemplate>();
+    WeaponTemplate[] weapons;
     float totalDropChance = 101f;
     float randomizer;
 
     // weapon stats import support
-    public new string name;
-    public float damage;
-    public float weight;
-    public float fireRate;
-    public float dropChance;
-    public bool meleeWeapon;
+    new string name;
+    float damage;
+    float weight;
+    float fireRate;
+    float dropChance;
+    bool meleeWeapon;
 
     #endregion
 
     #region Properties
 
-    private void Awake()
-    {
-        PickGun();
-    }
 
     private void Start()
     {
+        PickGun();
         doug = GameObject.FindGameObjectWithTag("Player");
         status = doug.GetComponent<PlayerWeaponStatus>();
         primaryWeapon = doug.GetComponent<PrimaryWeapon>();
@@ -69,6 +66,13 @@ public class WeaponDisk : MonoBehaviour
     /// </summary>
     void PickGun()
     {
+        weapons = Resources.LoadAll<WeaponTemplate>("Weapons");
+        System.Array.Sort(weapons, CompareDropRates);
+        System.Array.Reverse(weapons);
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            Debug.Log(weapons[i].dropChance);
+        }
         randomizer = Random.Range(0, totalDropChance);
         foreach (WeaponTemplate weapon in weapons)
         {
@@ -112,5 +116,9 @@ public class WeaponDisk : MonoBehaviour
         secondaryWeaponEquipped = status.SecondaryEquipped;
     }
 
+    static int CompareDropRates(WeaponTemplate gun1, WeaponTemplate gun2)
+    {
+        return gun1.dropChance.CompareTo(gun2.dropChance);
+    }
     #endregion
 }

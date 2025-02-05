@@ -1,34 +1,91 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    float health;
-    float speed;
-    float weight;
-    float regen;
-    float dashSpeed;
+    #region Fields
 
-    public HealthBarLogic healthBar;
+    const float HEALTH = 100;
+
+    //modifiers
+    float healthMod = 1;
+    float speedMod = 1;
+    float weightMod = 1;
+    float dashSpeedMod = 1;
 
     bool airDash = false;
     bool groundSlam = false;
     bool dash = false;
     bool parry = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField]
+    PlayerHealth healthScript;
+
+    #endregion
+
+    #region Properties
+    
+    public float Health
+    { 
+        get { return HEALTH; } 
+    }
+    public float HealthMod
     {
-        health = 100; //+ modifiers
-        healthBar.SetHealthBar(health);
+        get { return healthMod; }
+    }
+    public float SpeedMod
+    {
+        get { return speedMod; }
+    }
+    public float WeightMod
+    {
+        get { return weightMod; }
+    }
+    public float DashSpeedMod
+    {
+        get { return dashSpeedMod; }
+    }
+    public bool AirDash
+    {
+        get { return airDash; }
+    }
+    public bool GroundSlam
+    {
+        get { return groundSlam; }
+    }
+    public bool Dash
+    {
+        get { return dash; }
+    }
+    public bool Parry
+    {
+        get { return parry; }
     }
 
-    // Update is called once per frame
-    void Update()
+    #endregion
+
+    #region Methods
+
+    public void HealthModUpdate(float mod)
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            health -= 10;
-            healthBar.Damage(10);
-        }
+        healthMod += mod;
+        healthScript.UpdateMaxHealth();
     }
+
+    public void SpeedModUpdate(float mod)
+    {
+        speedMod += mod;
+    }
+
+    public void WeightModUpdate(float mod)
+    {
+        weightMod += mod;
+    }
+
+    public void DashSpeedModUpdate(float mod)
+    {
+        dashSpeedMod += mod;
+    }
+
+    #endregion
 }

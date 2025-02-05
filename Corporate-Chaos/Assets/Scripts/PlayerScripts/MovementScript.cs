@@ -4,22 +4,8 @@ using UnityEngine;
 public class MovementScript : Core
 {
     #region Fields
-    // declares movement variables
-    const float MoveSpeed = 17f;
-    public float JumpSpeed = 45f;
-    const float DashSpeed = 2f;
-    const float GRAVITYSCALE = 1.015f;
-    public float maxGrav;
-    public float minGrav;
-    public float horizontalMovement { get; private set; }
-    public float jumpMovement { get; private set; }
-    public float dashMovement { get; private set; }
-    public float attack { get; private set; }
 
-    bool facingRight = true;
-    bool isDashing = false;
-    bool isJumping = false;
-
+    //Serializers
 
     //Animator State Support
     [SerializeField]
@@ -30,6 +16,28 @@ public class MovementScript : Core
     State dashState;
     [SerializeField]
     State idleState;
+
+    //SubScript support
+    [SerializeField]
+    PlayerStats stats;
+
+    // declares movement variables
+    float MoveSpeed => 17f * stats.SpeedMod;
+    public float JumpSpeed = 45f;
+    float DashSpeed => 2f * stats.DashSpeedMod;
+    const float GRAVITYSCALE = 1.015f;
+    public float maxGrav;
+    public float minGrav;
+    public float horizontalMovement { get; private set; }
+    public float jumpMovement { get; private set; }
+    public float dashMovement { get; private set; }
+    public float attack { get; private set; }
+
+    bool facingRight = true;
+    bool isDashing = false;
+
+
+    
 
     //Timers
     Timer dashTimer;
@@ -101,7 +109,6 @@ public class MovementScript : Core
         
         if (jumpMovement != 0 && groundSensor.grounded)
         {
-            isJumping = true;
             rb2d.linearVelocity = new Vector2 (rb2d.linearVelocityX, JumpSpeed);
         }
         if(rb2d.linearVelocityY < 1)

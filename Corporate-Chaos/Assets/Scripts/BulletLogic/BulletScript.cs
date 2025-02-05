@@ -33,6 +33,10 @@ public class BulletScript : MonoBehaviour
             health.DamageEnemy(damage);
             Destroy(gameObject);
         }
+        else
+        {
+            Destroy(gameObject );
+        }
     }
 
     void Comps()
