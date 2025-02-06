@@ -9,8 +9,10 @@ public class WeaponTemplate : ScriptableObject
     public float fireRate;
     public int dropChance;
     public bool meleeWeapon;
+    public int price;
+    public int levelRequirement;
 
-    public WeaponTemplate(string name, float damage, float weight, float fireRate, int dropChance, bool meleeWeapon)
+    public WeaponTemplate(string name, float damage, float weight, float fireRate, int dropChance, bool meleeWeapon, int price, int levelRequirement)
     {
         this.name = name;
         this.damage = damage;
@@ -18,5 +20,7 @@ public class WeaponTemplate : ScriptableObject
         this.fireRate = fireRate;
         this.dropChance = dropChance;
         this.meleeWeapon = meleeWeapon;
+        this.price = price;
+        this.levelRequirement = levelRequirement;
     }
 }

@@ -69,10 +69,6 @@ public class WeaponDisk : MonoBehaviour
         weapons = Resources.LoadAll<WeaponTemplate>("Weapons");
         System.Array.Sort(weapons, CompareDropRates);
         System.Array.Reverse(weapons);
-        for (int i = 0; i < weapons.Length; i++)
-        {
-            Debug.Log(weapons[i].dropChance);
-        }
         randomizer = Random.Range(0, totalDropChance);
         foreach (WeaponTemplate weapon in weapons)
         {

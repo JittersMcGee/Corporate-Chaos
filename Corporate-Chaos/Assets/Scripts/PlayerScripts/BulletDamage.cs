@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -25,14 +26,6 @@ public class BulletDamage : MonoBehaviour
     PlayerWeaponStatus weaponStatus;
     GroundSensor groundSensor;
     Timer fireRateTimer;
-
-    #endregion
-
-    #region Constructors
-
-    public BulletDamage()
-    {
-    }
 
     #endregion
 
@@ -93,8 +86,7 @@ public class BulletDamage : MonoBehaviour
                 direction = Mathf.Sign(parentDirection);
                 bulletrb2d.linearVelocity = new Vector2(BULLETMAGNITUDE * direction, -0.01f);
 
-                fireRateTimer.Duration = fireRate;
-                fireRateTimer.Run();
+                StartCoroutine("FireRateTimer");
 
             }
         }
@@ -109,6 +101,11 @@ public class BulletDamage : MonoBehaviour
         fireRateTimer = gameObject.AddComponent<Timer>();
         fireRateTimer.Duration = 0.5f;
         fireRateTimer.Run();
+    }
+
+    IEnumerator FireRateTimer()
+    {
+        yield return new WaitForSeconds(fireRate);
     }
     #endregion
 }
