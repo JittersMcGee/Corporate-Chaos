@@ -86,8 +86,8 @@ public class BulletDamage : MonoBehaviour
                 direction = Mathf.Sign(parentDirection);
                 bulletrb2d.linearVelocity = new Vector2(BULLETMAGNITUDE * direction, -0.01f);
 
-                StartCoroutine("FireRateTimer");
-
+                fireRateTimer.Duration = fireRate;
+                fireRateTimer.Run();
             }
         }
     }
@@ -103,9 +103,5 @@ public class BulletDamage : MonoBehaviour
         fireRateTimer.Run();
     }
 
-    IEnumerator FireRateTimer()
-    {
-        yield return new WaitForSeconds(fireRate);
-    }
     #endregion
 }

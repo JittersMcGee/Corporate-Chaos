@@ -48,13 +48,11 @@ public class PlayerWeaponStatus : MonoBehaviour
         {
             primaryEquipped = true;
             secondaryEquipped = false;
-            Debug.Log("Primary");
         }
         else if (equipSecondary > 0)
         {
             primaryEquipped = false;
             secondaryEquipped = true;
-            Debug.Log("Secondary");
         }
         if (!primaryEquipped && !secondaryEquipped)
         {
